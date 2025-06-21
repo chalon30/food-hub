@@ -1,5 +1,5 @@
 .app-header {
-  background: linear-gradient(to right, #f18226, #e45b00); /* rojo oscuro a naranja */
+  background: linear-gradient(to right, #4B0C0C, #8B1A1A); /* rojo vino a rojo quemado */
   color: #fff;
   position: sticky;
   top: 0;
@@ -13,7 +13,7 @@
   font-size: 1.8rem;
   font-weight: bold;
   letter-spacing: 1px;
-  color: #FFD700; /* dorado */
+  color: #FBC02D; /* dorado opaco */
 }
 
 .logo strong {
@@ -26,19 +26,21 @@
 }
 
 .nav-links a {
-  color: white;
+  color: #FFFFFF; /* blanco puro */
   font-weight: 500;
   text-transform: uppercase;
   margin-left: 1rem;
-  transition: color 0.3s;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
 }
 
 .nav-links a:hover {
-  color: #FFD700; /* dorado al pasar */
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+  color: #FBC02D; /* dorado al pasar */
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
 }
 
 .active {
-  border-bottom: 2px solid #FFD700;
+  border-bottom: 2px solid #FBC02D;
 }
