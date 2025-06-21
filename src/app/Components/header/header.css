@@ -1,0 +1,44 @@
+.app-header {
+  background: linear-gradient(to right, #f18226, #e45b00); /* rojo oscuro a naranja */
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #FFD700; /* dorado */
+}
+
+.logo strong {
+  color: #fff; /* blanco para D'Kyara */
+  font-style: italic;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.nav-links a {
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-left: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #FFD700; /* dorado al pasar */
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.active {
+  border-bottom: 2px solid #FFD700;
+}
