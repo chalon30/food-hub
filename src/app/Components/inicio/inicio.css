@@ -27,9 +27,9 @@
 }
 
 .welcome-text h2 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   color: #000000;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
   letter-spacing: 1px;
@@ -38,20 +38,16 @@
 .welcome-text p {
   font-size: 1.3rem;
   line-height: 1.6;
-  color: #ffffff; /* tono claro que hace contraste */
+  color: #ffffff;
   font-weight: 400;
   text-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.3);
   max-width: 90%;
 }
 
-.image-container {
-  flex: 1 1 50%;
-  text-align: right;
-}
-
 .image-container img {
-  max-width: 100%;
+  max-width: 60%; 
   height: auto;
   border-radius: 12px;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
