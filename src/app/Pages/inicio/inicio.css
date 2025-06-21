@@ -1,0 +1,57 @@
+.inicio-card {
+  width: 100vw;
+  max-width: 100%;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: #e67326ea;
+  color: #000000;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 2rem 4rem;
+  box-sizing: border-box;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto; 
+}
+
+.welcome-text {
+  flex: 1 1 45%;
+}
+
+.welcome-text h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #000000;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  letter-spacing: 1px;
+}
+
+.welcome-text p {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #ffffff; /* tono claro que hace contraste */
+  font-weight: 400;
+  text-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.3);
+  max-width: 90%;
+}
+
+.image-container {
+  flex: 1 1 50%;
+  text-align: right;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
