@@ -1,5 +1,5 @@
 .app-header {
-  background: linear-gradient(to right, #4B0C0C, #8B1A1A); /* rojo vino a rojo quemado */
+  background: linear-gradient(to right, #4B0C0C, #8B1A1A);
   color: #fff;
   position: sticky;
   top: 0;
@@ -7,17 +7,19 @@
   padding: 0 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
   letter-spacing: 1px;
-  color: #FBC02D; /* dorado opaco */
+  color: #FBC02D;
 }
 
 .logo strong {
-  color: #fff; /* blanco para D'Kyara */
+  color: #fff;
   font-style: italic;
 }
 
@@ -25,8 +27,13 @@
   flex: 1 1 auto;
 }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
 .nav-links a {
-  color: #FFFFFF; /* blanco puro */
+  color: #FFFFFF;
   font-weight: 500;
   text-transform: uppercase;
   margin-left: 1rem;
@@ -35,35 +42,45 @@
 }
 
 .nav-links a:hover {
-  color: #FBC02D; /* dorado al pasar */
+  color: #FBC02D;
   background-color: rgba(255, 255, 255, 0.08);
   border-radius: 6px;
   padding: 0.3rem 0.6rem;
 }
 
-.app-header {
-  background-color: #e65100;
+/* --- Usuario (ícono + nombre fijo y centrado) --- */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
   color: white;
-  padding: 0 1rem;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-.nav-links a {
-  color: white;
-  font-weight: 500;
-  margin: 0 0.5rem;
-  text-transform: uppercase;
+  font-size: 0.85rem;
+  min-width: 60px;
 }
 
 .user-icon {
-  margin-left: 1rem;
   color: white;
+  font-size: 36px;
+  line-height: 1;
+  margin: 0; 
+  bottom: 8px;
+}
+
+.username {
+  margin-top: 1px;
+  font-weight: 800;
+  text-align: center;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.user-info:hover .user-icon {
+  color: #FBC02D; 
+}
+
+.user-info:hover .username {
+  color: #FBC02D;
 }

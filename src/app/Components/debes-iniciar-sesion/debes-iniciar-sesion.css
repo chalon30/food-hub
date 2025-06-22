@@ -1,0 +1,29 @@
+.debes-iniciar-container {
+  max-width: 500px;
+  margin: 4rem auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: #fff8e1;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.icono-aviso {
+  font-size: 48px;
+  color: #d84315;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  margin: 0.5rem 0;
+  color: #5d4037;
+}
+
+p {
+  margin: 1rem 0 2rem;
+  color: #6d4c41;
+}
+
+button mat-icon {
+  margin-right: 0.5rem;
+}

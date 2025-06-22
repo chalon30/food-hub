@@ -3,6 +3,7 @@ import { appsettings } from '../../Settings/appsettings';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../../Models/Usuario';
 import { ResponseAPI } from '../../Models/ResponseAPI';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,21 +11,40 @@ import { ResponseAPI } from '../../Models/ResponseAPI';
 export class UsuarioService {
   private apiUrl: string = appsettings.apiUrl + 'usuarios';
   private http = inject(HttpClient);
+
   constructor() {}
 
-  listar() {
-    return this.http.get<Usuario[]>(this.apiUrl);
+  // ✅ Login
+  login(correo: string, clave: string): Observable<Usuario> {
+    return this.http.post<Usuario>(`${this.apiUrl}/login`, { correo, clave });
   }
 
-  obtenerUsuario(id: number) {
-    return this.http.get<Usuario>(`${this.apiUrl}/${id}`);
+  // ✅ Registro
+  register(usuario: Usuario) {
+  return this.http.post<{ mensaje: string; usuario: Usuario }>(
+    this.apiUrl + '/register',
+    usuario
+  );
+}
+
+  // ✅ Guardar en localStorage
+  guardarUsuario(usuario: Usuario) {
+    localStorage.setItem('usuario', JSON.stringify(usuario));
   }
 
-  crearUsuario(obj: Usuario) {
-    return this.http.post<ResponseAPI>(this.apiUrl, obj);
+  // ✅ Obtener usuario actual
+  getUsuarioActual(): Usuario | null {
+    const data = localStorage.getItem('usuario');
+    return data ? JSON.parse(data) : null;
   }
 
-  eliminarUsuario(id: number) {
-    return this.http.delete<ResponseAPI>(`${this.apiUrl}/${id}`);
+  // ✅ Verificar si está logueado
+  isLoggedIn(): boolean {
+    return localStorage.getItem('usuario') !== null;
+  }
+
+  // ✅ Logout
+  logout() {
+    localStorage.removeItem('usuario');
   }
 }

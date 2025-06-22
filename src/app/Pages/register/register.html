@@ -1,0 +1,49 @@
+<h2>Registro de Usuario</h2>
+
+<!-- Mensaje de error -->
+<div *ngIf="error" class="error-message">
+  {{ error }}
+</div>
+
+<form (ngSubmit)="register()" class="register-form">
+  <!-- Campo Nombre -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="usuario.nombre" name="nombre" required />
+  </mat-form-field>
+
+  <!-- Campo Correo -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Correo</mat-label>
+    <input
+      matInput
+      type="email"
+      [(ngModel)]="usuario.correo"
+      name="correo"
+      required
+    />
+  </mat-form-field>
+
+  <!-- Campo Clave -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Contraseña</mat-label>
+    <input
+      matInput
+      type="password"
+      [(ngModel)]="usuario.clave"
+      name="clave"
+      required
+    />
+  </mat-form-field>
+
+  <!-- Botón de registro -->
+  <button mat-raised-button color="primary" type="submit" class="full-width">
+    Registrarse
+  </button>
+</form>
+
+<!-- Mensaje de ya tienes cuenta -->
+<p class="login-message">
+  ¿Ya tienes una cuenta?
+  <a [routerLink]="['/login']">Inicia sesión aquí</a> <!-- 👈 Este debe funcionar -->
+</p>

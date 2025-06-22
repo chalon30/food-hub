@@ -1,0 +1,14 @@
+<app-debes-iniciar-sesion *ngIf="!estaLogeado"></app-debes-iniciar-sesion>
+
+<div *ngIf="estaLogeado">
+  <h2>Bienvenido al perfil, {{ usuario?.nombre | titlecase }}</h2>
+
+  <div class="perfil-info">
+    <p><strong>Nombre:</strong> {{ usuario?.nombre }}</p>
+    <p><strong>Correo:</strong> {{ usuario?.correo }}</p>
+
+    <button (click)="logout()" class="logout-button">
+      Cerrar sesión
+    </button>
+  </div>
+</div>
