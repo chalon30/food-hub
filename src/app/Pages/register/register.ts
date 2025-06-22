@@ -28,17 +28,47 @@ export class Register {
     clave: '',
     nombre: '',
   };
+
   error = '';
   mensaje = '';
 
   constructor(private usuarioService: UsuarioService, private router: Router) {}
 
   register() {
+    // Validaciones básicas
+    if (!this.usuario.nombre.trim()) {
+      this.error = 'El nombre es obligatorio.';
+      return;
+    }
+
+    if (!this.usuario.correo.trim()) {
+      this.error = 'El correo es obligatorio.';
+      return;
+    }
+
+    // Validación de formato de correo electrónico
+    const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.usuario.correo);
+    if (!correoValido) {
+      this.error = 'El correo electrónico no es válido.';
+      return;
+    }
+
+    if (!this.usuario.clave.trim()) {
+      this.error = 'La contraseña es obligatoria.';
+      return;
+    }
+
+    if (this.usuario.clave.length < 6) {
+      this.error = 'La contraseña debe tener al menos 6 caracteres.';
+      return;
+    }
+
+    // Si pasa todas las validaciones, se envía al backend
     this.usuarioService.register(this.usuario).subscribe({
       next: (resp) => {
         alert(resp.mensaje);
         this.usuarioService.guardarUsuario(resp.usuario);
-        this.router.navigate(['/login']); // <-- Aquí rediriges a login
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         if (err.error && typeof err.error === 'string') {
@@ -48,7 +78,7 @@ export class Register {
         } else if (err.error?.error) {
           this.error = err.error.error;
         } else {
-          this.error = 'Error inesperado';
+          this.error = 'Error inesperado.';
         }
       },
     });
