@@ -1,28 +1,20 @@
-<!-- carta.html -->
 <app-filtros (filtrar)="filtrarCategoria($event)"></app-filtros>
 
-
 <div class="productos-container">
-  <mat-card class="producto" *ngFor="let producto of productosFiltrados">
+  <mat-card 
+    class="producto" 
+    *ngFor="let producto of productosFiltrados" 
+    (click)="verDetalle(producto)" 
+    style="cursor: pointer;"
+  >
     <img mat-card-image [src]="producto.imagen" [alt]="producto.nombre" />
 
     <mat-card-title>{{ producto.nombre }}</mat-card-title>
 
     <mat-card-content>
       <p class="producto-descripcion">{{ producto.descripcion }}</p>
-      <strong class="producto-precio">S/ {{ producto.precio }}</strong>
+      <strong class="producto-precio">Precio: S/ {{ producto.precio }}</strong>
     </mat-card-content>
-
-    <mat-card-actions>
-      <button
-        mat-raised-button
-        color="primary"
-        class="btn-comprar"
-        (click)="comprarProducto(producto)"
-      >
-        <mat-icon>shopping_cart</mat-icon> Comprar
-      </button>
-    </mat-card-actions>
   </mat-card>
 </div>
 
