@@ -1,0 +1,31 @@
+<mat-card *ngIf="!cargando && producto" class="detalle-producto-card">
+  <div class="detalle-contenido">
+    <div class="imagen-container">
+      <img mat-card-image [src]="producto.imagen" alt="{{ producto.nombre }}" />
+    </div>
+    <div class="info-container">
+      <mat-card-title>{{ producto.nombre }}</mat-card-title>
+      <mat-card-content>
+        <p class="precio"><strong>Precio:</strong> S/ {{ producto.precio }}</p>
+        <p class="descripcion">
+          <strong>Descripción:</strong> {{ producto.descripcion }}
+        </p>
+        <div class="botones">
+          <button mat-raised-button color="primary">
+            <mat-icon>add_shopping_cart</mat-icon> Añadir al carrito
+          </button>
+          <button mat-raised-button color="accent">
+            <mat-icon>shopping_bag</mat-icon> Comprar ahora
+          </button>
+          <button mat-stroked-button color="warn" (click)="volver()">
+            <mat-icon>arrow_back</mat-icon> Volver
+          </button>
+        </div>
+      </mat-card-content>
+    </div>
+  </div>
+</mat-card>
+
+<div *ngIf="cargando" class="cargando">
+  <p>Cargando producto...</p>
+</div>

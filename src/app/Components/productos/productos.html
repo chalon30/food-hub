@@ -1,10 +1,16 @@
 <div class="productos-container">
-  <mat-card class="producto" *ngFor="let producto of productos">
-    <img mat-card-image [src]="producto.imagen" [alt]="producto.nombre" />
-    <mat-card-title>{{ producto.nombre }}</mat-card-title>
-    <mat-card-content>
-      <p>{{ producto.descripcion }}</p>
-      <strong>Precio: S/ {{ producto.precio }}</strong>
-    </mat-card-content>
-  </mat-card>
+  <a
+    *ngFor="let producto of productos"
+    [routerLink]="['/producto', producto.id]"
+    class="producto-link"
+  >
+    <mat-card class="producto">
+      <img mat-card-image [src]="producto.imagen" [alt]="producto.nombre" />
+      <mat-card-title>{{ producto.nombre }}</mat-card-title>
+      <mat-card-content>
+        <p>{{ producto.descripcion }}</p>
+        <strong>Precio: S/ {{ producto.precio }}</strong>
+      </mat-card-content>
+    </mat-card>
+  </a>
 </div>
