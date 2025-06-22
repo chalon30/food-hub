@@ -1,0 +1,41 @@
+.filtro-form {
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto;
+  display: block;
+}
+
+mat-form-field {
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+mat-label {
+  font-weight: 600;
+  color: #0c0c0c;
+}
+
+mat-select {
+  font-weight: 500;
+}
+
+.mat-select-arrow {
+  color: #000000;
+}
+
+.mat-option {
+  font-size: 14px;
+  padding: 10px;
+}
+
+.mat-option:hover {
+  background-color: #0c0c0c;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .filtro-form {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}

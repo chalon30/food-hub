@@ -19,6 +19,12 @@ export const routes: Routes = [
     component: Perfil,
   },
   { path: 'login', component: Login },
-  { path: 'register', component: Register}
+  { path: 'register', component: Register },
 
+  // ✅ Nueva ruta para la carta (componente standalone)
+  {
+    path: 'carta',
+    loadComponent: () =>
+      import('./Pages/carta/carta').then((m) => m.CartaComponent),
+  },
 ];
