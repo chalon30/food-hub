@@ -9,7 +9,7 @@ import { Producto } from '../../Models/Producto';
   standalone: true,
   imports: [CommonModule, MatCardModule],
   templateUrl: './productos.html',
-  styleUrls: ['./productos.css']
+  styleUrls: ['./productos.css'],
 })
 export class ProductosComponent implements OnInit {
   productos: Producto[] = [];
@@ -18,8 +18,8 @@ export class ProductosComponent implements OnInit {
 
   ngOnInit(): void {
     this.productoService.listar().subscribe({
-      next: (data) => this.productos = data,
-      error: (err) => console.error('Error al cargar productos', err)
+      next: (data) => (this.productos = data.slice(0, 5)),
+      error: (err) => console.error('Error al cargar productos', err),
     });
   }
 }
