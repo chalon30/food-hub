@@ -1,44 +1,66 @@
 .nosotros-card {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 3rem auto;
-  padding: 1rem;
-  background-color: #fffaf3;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
+  padding: 2rem;
+  background-color: #fff8f0;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
   font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
 }
 
-mat-card-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #bf360c; /* rojo oscuro criollo */
+.nosotros-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+}
+
+.text-section {
+  flex: 1 1 55%;
+}
+
+.image-section {
+  flex: 1 1 40%;
   text-align: center;
-  margin-bottom: 1rem;
+}
+
+.image-section img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.icon {
+  font-size: 38px;
+  color: #e65100;
+  margin-right: 1rem;
+}
+
+.title-container .title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #bf360c;
+}
+
+.title-container .subtitle {
+  font-size: 1.1rem;
+  color: #6d4c41;
+  margin-top: 0.25rem;
 }
 
 mat-card-content p {
   font-size: 1.1rem;
-  line-height: 1.6;
-  color: #4e342e;
-  margin: 1rem 0;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
   text-align: justify;
-}
-
-mat-card-actions {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-button[mat-button] {
-  background-color: #ff7043;
-  color: white;
-  font-weight: bold;
-  padding: 0.6rem 1.5rem;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
-
-button[mat-button]:hover {
-  background-color: #e64a19;
+  color: #3e2723;
 }
