@@ -18,7 +18,7 @@ export class ProductosComponent implements OnInit {
 
   ngOnInit(): void {
     this.productoService.listar().subscribe({
-      next: (data) => (this.productos = data.slice(0, 5)),
+      next: (data) => (this.productos = data.slice(0, 4)),
       error: (err) => console.error('Error al cargar productos', err),
     });
   }
