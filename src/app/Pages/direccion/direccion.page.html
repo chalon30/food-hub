@@ -9,7 +9,6 @@
   <!-- Columna derecha: Formulario -->
   <div class="formulario-direccion">
     <form (ngSubmit)="guardarDireccion()">
-      
       <!-- Código Postal con búsqueda -->
       <label>
         Código Postal:
@@ -41,8 +40,8 @@
           type="text"
           [(ngModel)]="distrito"
           name="distrito"
-          readonly
-          placeholder="Distrito detectado automáticamente"
+          placeholder="Ingrese su distrito"
+          required
         />
       </label>
 
