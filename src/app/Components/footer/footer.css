@@ -1,0 +1,82 @@
+.footer {
+  background-color: #6e0f27; /* Color vino elegante */
+  color: #f5f5f5;
+  padding: 2rem 1rem 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0% 100%);
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  flex: 1 1 200px;
+}
+
+.brand-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffc107;
+}
+
+.brand-description {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  color: #f0dcdc;
+}
+
+.footer-links,
+.footer-social {
+  flex: 1 1 150px;
+}
+
+.footer-links h4,
+.footer-social h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #ffcccb;
+}
+
+.footer-links a {
+  display: block;
+  color: #f5f5f5;
+  text-decoration: none;
+  margin: 0.25rem 0;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ffc107;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.social-icons a {
+  color: #f5f5f5;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ffc107;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid #8d2940;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #e0cfcf;
+}
+

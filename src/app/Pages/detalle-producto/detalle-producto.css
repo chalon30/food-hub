@@ -123,3 +123,9 @@ button[color="warn"]:hover {
   border-color: #c62828;
   color: #b71c1c;
 }
+
+.agotado {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}

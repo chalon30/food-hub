@@ -52,6 +52,6 @@ export class CartaComponent implements OnInit {
   }
 
   verDetalle(producto: Producto): void {
-    this.router.navigate(['/producto', producto.id]); // cambia 'detalle-producto' por 'producto'
+    this.router.navigate(['/producto', producto.id]); 
   }
 }

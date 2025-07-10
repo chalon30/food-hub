@@ -1,0 +1,65 @@
+<h2 class="titulo-direccion">📍 Ingresar Dirección de Entrega</h2>
+
+<div class="contenedor-direccion">
+  <!-- Columna izquierda: Mapa -->
+  <div class="mapa-contenedor">
+    <div id="mapa"></div>
+  </div>
+
+  <!-- Columna derecha: Formulario -->
+  <div class="formulario-direccion">
+    <form (ngSubmit)="guardarDireccion()">
+      
+      <!-- Código Postal con búsqueda -->
+      <label>
+        Código Postal:
+        <input
+          type="text"
+          [(ngModel)]="codigoPostal"
+          name="codigoPostal"
+          (input)="codigoPostalInput$.next(codigoPostal)"
+          placeholder="Ej. 15074"
+          autocomplete="off"
+          required
+        />
+      </label>
+
+      <!-- Opciones sugeridas por código postal -->
+      <ul *ngIf="opcionesDirecciones.length > 0" class="opciones-distritos">
+        <li
+          *ngFor="let opcion of opcionesDirecciones"
+          (click)="seleccionarDireccion(opcion)"
+        >
+          {{ opcion.display_name }}
+        </li>
+      </ul>
+
+      <!-- Distrito autocompletado (readonly) -->
+      <label>
+        Distrito:
+        <input
+          type="text"
+          [(ngModel)]="distrito"
+          name="distrito"
+          readonly
+          placeholder="Distrito detectado automáticamente"
+        />
+      </label>
+
+      <!-- Dirección exacta -->
+      <label>
+        Dirección Exacta:
+        <input
+          type="text"
+          [(ngModel)]="direccion"
+          name="direccion"
+          required
+          placeholder="Calle, número, referencia"
+        />
+      </label>
+
+      <!-- Botón -->
+      <button type="submit">Guardar Dirección</button>
+    </form>
+  </div>
+</div>

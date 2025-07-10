@@ -1,0 +1,77 @@
+
+<!-- Carrito vacío -->
+<div *ngIf="productos.length === 0" class="carrito-vacio">
+  <p>
+    <mat-icon>remove_shopping_cart</mat-icon> Tu carrito está vacío
+  </p>
+  <a mat-raised-button color="primary" routerLink="/carta">
+    <mat-icon>storefront</mat-icon> Ir a la carta
+  </a>
+</div>
+
+<!-- Carrito con productos -->
+<div *ngIf="productos.length > 0" class="carrito-contenido">
+  
+  <!-- Lista de productos -->
+  <div class="productos-lista">
+    <mat-card class="producto-item" *ngFor="let item of productos; let i = index">
+      <div class="contenido">
+        <img
+          [src]="item.producto.imagen"
+          [alt]="item.producto.nombre"
+          class="producto-imagen"
+        />
+
+        <div class="info">
+          <h3>{{ item.producto.nombre }}</h3>
+          <p>Precio unitario: <strong>S/ {{ item.producto.precio.toFixed(2) }}</strong></p>
+
+          <div class="cantidad-controls">
+            <button mat-icon-button color="primary" (click)="disminuirCantidad(i)">
+              <mat-icon>remove</mat-icon>
+            </button>
+            <span class="cantidad">{{ item.cantidad }}</span>
+            <button mat-icon-button color="primary" (click)="aumentarCantidad(i)">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+
+          <p>Total: <strong>S/ {{ (item.producto.precio * item.cantidad).toFixed(2) }}</strong></p>
+        </div>
+
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="eliminarProducto(i)"
+          aria-label="Eliminar"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Resumen de compra -->
+  <div class="resumen">
+    <h3>Resumen de compra</h3>
+    <p>Subtotal: <strong>{{ resumen.subtotal }}</strong></p>
+    <p *ngIf="resumen.descuento !== 'S/ 0.00'">
+      Descuento aplicado: <strong>- {{ resumen.descuento }}</strong>
+    </p>
+    <p *ngIf="resumen.descuento === 'S/ 0.00'" class="sin-descuento">
+      <em>No aplica descuento para este monto.</em>
+    </p>
+    <p class="total-final">
+      Total a pagar: <strong>{{ resumen.total }}</strong>
+    </p>
+
+    <div class="botones-acciones">
+      <button mat-raised-button color="warn" (click)="limpiarCarrito()">
+        <mat-icon>delete_sweep</mat-icon> Vaciar carrito
+      </button>
+      <button mat-raised-button color="primary" (click)="generarPedido()">
+        <mat-icon>payments</mat-icon> Generar Pedido
+      </button>
+    </div>
+  </div>
+</div>

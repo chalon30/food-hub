@@ -1,0 +1,32 @@
+.no-encontrado-container {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: #f9f2f4;
+  color: #6e0f27;
+}
+
+.no-encontrado-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.no-encontrado-container p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.patricio-img {
+  max-width: 90%;
+  width: 400px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  margin: 1rem 0;
+  filter: grayscale(100%); /* ✅ Filtro en blanco y negro */
+}
+
+a[mat-raised-button] {
+  background-color: #6e0f27;
+  color: #fff;
+}

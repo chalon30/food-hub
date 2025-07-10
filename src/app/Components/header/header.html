@@ -1,5 +1,5 @@
 <mat-toolbar class="app-header">
-  <span class="logo">Anticuchería <strong>D'Kyara</strong></span>
+  <span class="logo">Restaurante <strong>D'Kyara</strong></span>
 
   <span class="spacer"></span>
 
@@ -9,6 +9,20 @@
     <a mat-button routerLink="/nosotros" routerLinkActive="active">Nosotros</a>
     <a mat-button routerLink="/contacto" routerLinkActive="active">Contacto</a>
   </nav>
+
+    <!-- ✅ Mostrar carrito solo si hay usuario -->
+    <a
+      *ngIf="usuario"
+      mat-icon-button
+      routerLink="/carrito"
+      aria-label="Ver carrito"
+      class="carrito-icon"
+    >
+      <mat-icon>shopping_cart</mat-icon>
+      <span class="carrito-badge" *ngIf="cantidadCarrito > 0">
+        {{ cantidadCarrito }}
+      </span>
+    </a>
 
   <!-- Ícono y nombre de usuario -->
   <div class="user-info">
@@ -23,7 +37,5 @@
     >
       <mat-icon>account_circle</mat-icon>
     </a>
-
-
   </div>
 </mat-toolbar>

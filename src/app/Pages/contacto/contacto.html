@@ -1,0 +1,39 @@
+<mat-card class="contacto-card">
+  <mat-card-title>Contáctanos</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="contactoForm" (ngSubmit)="enviar()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Tu nombre" formControlName="nombre" required />
+        <mat-error *ngIf="contactoForm.get('nombre')?.invalid && contactoForm.get('nombre')?.touched">
+          El nombre es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Correo electrónico</mat-label>
+        <input matInput type="email" placeholder="tucorreo@example.com" formControlName="correo" required />
+        <mat-error *ngIf="contactoForm.get('correo')?.invalid && contactoForm.get('correo')?.touched">
+          Ingresa un correo válido.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Mensaje</mat-label>
+        <textarea matInput placeholder="Escribe tu mensaje" formControlName="mensaje" rows="4" required></textarea>
+        <mat-error *ngIf="contactoForm.get('mensaje')?.invalid && contactoForm.get('mensaje')?.touched">
+          El mensaje es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="btn-enviar" type="submit" [disabled]="contactoForm.invalid">
+        <mat-icon>send</mat-icon> Enviar
+      </button>
+    </form>
+
+    <div *ngIf="enviado" class="mensaje-exito">
+      <mat-icon>check_circle</mat-icon>
+      ¡Tu mensaje ha sido enviado con éxito!
+    </div>
+  </mat-card-content>
+</mat-card>

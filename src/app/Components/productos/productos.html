@@ -10,6 +10,9 @@
       <mat-card-content>
         <p>{{ producto.descripcion }}</p>
         <strong>Precio: S/ {{ producto.precio }}</strong>
+        
+        <!-- ✅ Mostrar mensaje si está agotado -->
+        <p class="agotado" *ngIf="!producto.disponible">⚠️ Producto Agotado</p>
       </mat-card-content>
     </mat-card>
   </a>

@@ -1,0 +1,8 @@
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Método de Pago</mat-label>
+  <mat-select [(ngModel)]="metodoSeleccionado" (selectionChange)="onSeleccionar()">
+    <mat-option *ngFor="let metodo of metodos" [value]="metodo.id">
+      {{ metodo.nombre }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

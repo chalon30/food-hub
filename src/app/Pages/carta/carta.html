@@ -1,11 +1,11 @@
 <app-filtros (filtrar)="filtrarCategoria($event)"></app-filtros>
 
 <div class="productos-container">
-  <mat-card 
-    class="producto" 
-    *ngFor="let producto of productosFiltrados" 
-    (click)="verDetalle(producto)" 
-    style="cursor: pointer;"
+  <mat-card
+    class="producto"
+    *ngFor="let producto of productosFiltrados"
+    (click)="verDetalle(producto)"
+    style="cursor: pointer"
   >
     <img mat-card-image [src]="producto.imagen" [alt]="producto.nombre" />
 
@@ -14,6 +14,11 @@
     <mat-card-content>
       <p class="producto-descripcion">{{ producto.descripcion }}</p>
       <strong class="producto-precio">Precio: S/ {{ producto.precio }}</strong>
+
+      <!-- ✅ Mensaje si está agotado -->
+      <p class="producto-agotado" *ngIf="!producto.disponible">
+        ⚠️ Producto Agotado
+      </p>
     </mat-card-content>
   </mat-card>
 </div>

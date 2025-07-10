@@ -1,0 +1,89 @@
+<h2 class="titulo-pago">Revisión y Confirmación del Pedido</h2>
+
+<!-- Estado de carga -->
+<div *ngIf="cargando" class="cargando">
+  <mat-spinner diameter="50"></mat-spinner>
+  <p>Cargando detalles del pedido...</p>
+</div>
+
+<!-- Contenido del Pedido -->
+<div *ngIf="!cargando && pedidoTemporal" class="pago-contenido">
+  <!-- Columna izquierda: Detalles del pedido -->
+  <div class="pago-detalles">
+    <!-- Información del cliente -->
+    <mat-card class="resumen-usuario">
+      <h3>Información del Cliente</h3>
+      <p><strong>Nombre:</strong> {{ usuarioNombre }}</p>
+
+      <div
+        *ngIf="direccionUsuario; else sinDireccion"
+        class="direccion-detalle"
+      >
+        <h4>Dirección de Entrega:</h4>
+        <p><strong>Calle:</strong> {{ direccionUsuario.direccion }}</p>
+        <p><strong>Distrito:</strong> {{ direccionUsuario.distrito }}</p>
+        <p>
+          <strong>Código Postal:</strong> {{ direccionUsuario.codigoPostal }}
+        </p>
+      </div>
+
+      <ng-template #sinDireccion>
+        <p>No se ha registrado ninguna dirección.</p>
+      </ng-template>
+    </mat-card>
+
+    <!-- Lista de Productos -->
+    <mat-card>
+      <h3>Productos Seleccionados</h3>
+      <div class="lista-productos">
+        <mat-card class="producto-item" *ngFor="let p of productosDetallados">
+          <div class="producto-info">
+            <p><strong>Producto:</strong> {{ p.nombre }}</p>
+            <p><strong>Precio:</strong> S/ {{ p.precio }}</p>
+            <p><strong>Cantidad:</strong> {{ p.cantidad }}</p>
+            <p><strong>Subtotal:</strong> S/ {{ p.subtotal }}</p>
+          </div>
+        </mat-card>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Columna derecha: Resumen y acciones -->
+  <div class="pago-sidebar">
+    <!-- Resumen Totales -->
+    <mat-card class="resumen-total">
+      <h3>Resumen del Pedido</h3>
+      <p><strong>Subtotal:</strong> S/ {{ subtotal }}</p>
+
+      <!-- Mostrar descuento si aplica -->
+      <ng-container *ngIf="descuento > 0; else sinDescuento">
+        <p class="descuento-aplicado">
+          <strong>Descuento aplicado:</strong> -S/ {{ descuento }}
+        </p>
+      </ng-container>
+      <ng-template #sinDescuento>
+        <p class="sin-descuento">
+          <em>Este pedido no califica para descuento.</em>
+        </p>
+      </ng-template>
+
+      <p class="total"><strong>Total a Pagar:</strong> S/ {{ total }}</p>
+    </mat-card>
+
+    <!-- Botones de acción -->
+    <div class="acciones-pago">
+      <a mat-stroked-button color="primary" routerLink="/carrito">
+        Volver al Carrito
+      </a>
+      <button mat-raised-button color="accent" (click)="confirmarPago()">
+        Confirmar Pago
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Mensaje si no hay pedido -->
+<div *ngIf="!cargando && !pedidoTemporal" class="error">
+  <p>No hay un pedido para mostrar. Por favor regresa al carrito.</p>
+  <a mat-button routerLink="/carrito">Ir al carrito</a>
+</div>

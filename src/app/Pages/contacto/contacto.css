@@ -1,0 +1,45 @@
+.contacto-card {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fefefe;
+  border: 2px solid #800020;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(128, 0, 32, 0.3);
+}
+
+mat-card-title {
+  text-align: center;
+  color: #800020;
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.btn-enviar {
+  background-color: #800020;
+  color: #fff;
+  width: 100%;
+}
+
+.btn-enviar:hover {
+  background-color: #a00028;
+}
+
+.mensaje-exito {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f4e1e1;
+  color: #800020;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  justify-content: center;
+}

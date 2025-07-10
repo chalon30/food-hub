@@ -1,14 +1,49 @@
 <app-debes-iniciar-sesion *ngIf="!estaLogeado"></app-debes-iniciar-sesion>
 
-<div *ngIf="estaLogeado">
-  <h2>Bienvenido al perfil, {{ usuario?.nombre | titlecase }}</h2>
+<div *ngIf="estaLogeado" class="perfil-container mat-elevation-z4">
+  <div class="perfil-header">
+    <img
+      class="foto-perfil"
+      src="https://i.pravatar.cc/150?img=2"
+      alt="Foto de perfil"
+    />
+    <h2 class="perfil-titulo">
+      Bienvenido, {{ usuario?.nombre | titlecase }}
+    </h2>
+  </div>
 
   <div class="perfil-info">
-    <p><strong>Nombre:</strong> {{ usuario?.nombre }}</p>
-    <p><strong>Correo:</strong> {{ usuario?.correo }}</p>
+    <p>
+      <mat-icon color="primary">person</mat-icon>
+      <strong>Nombre:</strong> {{ usuario?.nombre }}
+    </p>
+    <p>
+      <mat-icon color="primary">email</mat-icon>
+      <strong>Correo:</strong> {{ usuario?.correo }}
+    </p>
+  </div>
 
-    <button (click)="logout()" class="logout-button">
+  <div class="perfil-acciones">
+    <button mat-raised-button color="primary" (click)="irAlCarrito()">
+      <mat-icon>shopping_cart</mat-icon>
+      Ir al Carrito
+    </button>
+
+    <button mat-raised-button color="accent" (click)="verPedidos()">
+      <mat-icon>list_alt</mat-icon>
+      Mis Pedidos
+    </button>
+
+    <button mat-raised-button color="warn" (click)="logout()">
+      <mat-icon>logout</mat-icon>
       Cerrar sesión
+    </button>
+  </div>
+
+  <div class="editar-seccion">
+    <button mat-stroked-button color="primary" (click)="editarPerfil()">
+      <mat-icon>edit</mat-icon>
+      Editar perfil
     </button>
   </div>
 </div>

@@ -72,3 +72,9 @@ mat-card-content strong {
   color: inherit;
   display: block;
 }
+
+.agotado {
+  color: red;
+  font-weight: bold;
+  margin-top: 8px;
+}
