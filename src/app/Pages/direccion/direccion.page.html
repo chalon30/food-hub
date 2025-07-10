@@ -3,7 +3,7 @@
 <div class="contenedor-direccion">
   <!-- Columna izquierda: Mapa -->
   <div class="mapa-contenedor">
-    <div id="mapa"></div>
+    <div *ngIf="isBrowser" id="mapa"></div>
   </div>
 
   <!-- Columna derecha: Formulario -->
