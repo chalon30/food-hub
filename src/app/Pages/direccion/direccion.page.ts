@@ -1,4 +1,10 @@
-import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  Inject,
+  PLATFORM_ID,
+} from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
@@ -7,6 +13,7 @@ import { Subject, of } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { DireccionService } from '../../Services/direccion/direccion.service';
 import { UsuarioService } from '../../Services/usuarios/usuario.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-direccion',
@@ -20,16 +27,13 @@ export class DireccionComponent implements OnInit, AfterViewInit {
   marker: any;
   L: any;
 
-  // 📌 Datos de dirección
   direccion: string = '';
   distrito: string = '';
   codigoPostal: string = '';
   usuarioId: number | null = null;
 
-  // 📌 SSR
   isBrowser: boolean;
 
-  // 📌 Autocompletado por código postal
   codigoPostalInput$ = new Subject<string>();
   opcionesDirecciones: any[] = [];
 
@@ -44,11 +48,8 @@ export class DireccionComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    if (!this.isBrowser) {
-      return;
-    }
+    if (!this.isBrowser) return;
 
-    // ✅ Solo en navegador: obtén usuario
     const usuario = this.usuarioService.getUsuarioActual();
     if (!usuario || !usuario.id) {
       alert('⚠️ Debes iniciar sesión para poder ingresar una dirección.');
@@ -59,11 +60,8 @@ export class DireccionComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (!this.isBrowser) {
-      return;
-    }
+    if (!this.isBrowser) return;
 
-    // ✅ Aquí cargamos Leaflet SOLO en cliente después del renderizado
     import('leaflet').then((L) => {
       this.L = L;
       this.initMap();
@@ -82,8 +80,8 @@ export class DireccionComponent implements OnInit, AfterViewInit {
     }).addTo(this.map);
 
     const icon = this.L.icon({
-      iconUrl: '/assets/leaflet/images/marker-icon.png',
-      shadowUrl: '/assets/leaflet/images/marker-shadow.png',
+      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
       iconSize: [25, 41],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
@@ -92,7 +90,7 @@ export class DireccionComponent implements OnInit, AfterViewInit {
 
     this.marker = this.L.marker([limaLat, limaLng], {
       draggable: true,
-      icon: icon
+      icon: icon,
     }).addTo(this.map);
 
     this.marker.on('dragend', () => {
@@ -116,7 +114,9 @@ export class DireccionComponent implements OnInit, AfterViewInit {
 
   private buscarPorCodigoPostal(cp: string) {
     if (!cp || cp.trim() === '') return of([]);
-    const url = `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&country=Peru&postalcode=${encodeURIComponent(cp)}`;
+
+    // ✅ Llama a tu backend como proxy para evitar CORS
+    const url = `${environment.apiUrl}/api/nominatim?postalcode=${encodeURIComponent(cp)}`;
     return this.http.get<any[]>(url);
   }
 
@@ -157,9 +157,7 @@ export class DireccionComponent implements OnInit, AfterViewInit {
       `¿Estás seguro de guardar esta dirección?\n\nDirección: ${this.direccion}\nDistrito: ${this.distrito}\nCódigo Postal: ${this.codigoPostal}`
     );
 
-    if (!confirmacion) {
-      return;
-    }
+    if (!confirmacion) return;
 
     const direccionCompleta = {
       usuarioId: this.usuarioId,
