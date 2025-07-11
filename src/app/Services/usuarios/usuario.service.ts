@@ -44,13 +44,14 @@ export class UsuarioService {
   getToken(): string | null {
     if (isPlatformBrowser(this.platformId)) {
       const data = localStorage.getItem(this.storageKey);
+      console.log('[UsuarioService] Raw data del storage:', data); // 👈
       if (data) {
         const usuario = JSON.parse(data);
         const token = usuario.token;
+        console.log('[UsuarioService] Token extraído:', token); // 👈
         if (token && !this.isTokenExpired(token)) {
           return token;
         } else {
-          // Si está expirado, limpiar sesión
           this.logout();
           return null;
         }

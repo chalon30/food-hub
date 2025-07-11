@@ -35,7 +35,7 @@ export class PedidoService {
   }
 
   /** ✅ Obtener pedidos del usuario autenticado */
-getMisPedidos(): Observable<PedidoResponse[]> {
-  return this.http.get<PedidoResponse[]>(`${this.pedidosUrl}/mis`);
-}
+  getMisPedidos(): Observable<PedidoResponse[]> {
+    return this.http.get<PedidoResponse[]>(`${this.pedidosUrl}/mis`);
+  }
 }

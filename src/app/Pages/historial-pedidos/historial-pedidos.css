@@ -104,3 +104,10 @@ div p {
     align-items: flex-start;
   }
 }
+
+.pendiente { color: orange; }
+.pagado { color: green; }
+.en-proceso { color: blue; }
+.enviado { color: teal; }
+.entregado { color: darkgreen; }
+.cancelado { color: red; }

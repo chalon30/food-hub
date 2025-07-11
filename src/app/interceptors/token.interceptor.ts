@@ -7,6 +7,7 @@ import { throwError } from 'rxjs';
 export const TokenInterceptor: HttpInterceptorFn = (req, next) => {
   const usuarioService = inject(UsuarioService);
   const token = usuarioService.getToken();
+  console.log('TOKEN INTERCEPTOR:', token);
 
   // ✅ Solo agregar token si existe y no está expirado (suponiendo que getToken ya valida expiración)
   if (token) {
@@ -16,7 +17,7 @@ export const TokenInterceptor: HttpInterceptorFn = (req, next) => {
       },
     });
   }
-
+  
   // ✅ Continuar con la request y limpiar sesión si llega un 401
   return next(req).pipe(
     catchError((error) => {
