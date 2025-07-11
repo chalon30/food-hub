@@ -57,8 +57,14 @@ export const routes: Routes = [
   {
     path: 'pago-exito',
     loadComponent: () =>
-      import('./Pages/pago-exito/pago-exito').then(
-        (m) => m.PagoExitoComponent
+      import('./Pages/pago-exito/pago-exito').then((m) => m.PagoExitoComponent),
+  },
+
+  {
+    path: 'historial-pedidos',
+    loadComponent: () =>
+      import('./Pages/historial-pedidos/historial-pedidos').then(
+        (m) => m.HistorialPedidos
       ),
   },
 

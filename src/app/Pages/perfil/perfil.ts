@@ -58,7 +58,7 @@ export class Perfil implements OnInit {
   }
 
   verPedidos(): void {
-    this.router.navigate(['/mis-pedidos']);
+    this.router.navigate(['/historial-pedidos']);
   }
 
   editarPerfil(): void {

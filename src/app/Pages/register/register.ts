@@ -67,19 +67,11 @@ export class Register {
     this.usuarioService.register(this.usuario).subscribe({
       next: (resp) => {
         alert(resp.mensaje);
-        this.usuarioService.guardarUsuario(resp.usuario);
+        this.usuarioService.guardarUsuarioConToken(resp.usuario, resp.token);
         this.router.navigate(['/login']);
       },
       error: (err) => {
-        if (err.error && typeof err.error === 'string') {
-          this.error = err.error;
-        } else if (err.error?.mensaje) {
-          this.error = err.error.mensaje;
-        } else if (err.error?.error) {
-          this.error = err.error.error;
-        } else {
-          this.error = 'Error inesperado.';
-        }
+        this.error = err.error?.mensaje || 'Error inesperado.';
       },
     });
   }

@@ -1,0 +1,106 @@
+/* Título principal */
+h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+/* Loader y error */
+.cargando,
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 1rem auto;
+  color: #555;
+}
+
+.error {
+  background-color: #ffe6e6;
+  border: 1px solid #f5c6cb;
+  color: #c0392b;
+  padding: 1rem;
+  border-radius: 8px;
+  max-width: 600px;
+}
+
+/* Mensaje sin pedidos */
+div p {
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  margin: 1.5rem 0;
+}
+
+/* Contenedor de cada pedido */
+.pedido-card {
+  background-color: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-left: 5px solid #3498db;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  margin: 1rem auto;
+  max-width: 700px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.pedido-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: scale(1.01);
+}
+
+/* Información del pedido */
+.pedido-card p {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+  color: #34495e;
+}
+
+.pedido-card .fecha {
+  font-weight: bold;
+  font-size: 1.05rem;
+  color: #2980b9;
+}
+
+/* Encabezado detalles */
+.pedido-card h4 {
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.3rem;
+}
+
+/* Lista de detalles del pedido */
+.pedido-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.pedido-card li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.95rem;
+  color: #555;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pedido-card li:last-child {
+  border-bottom: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pedido-card {
+    padding: 1rem 1.5rem;
+  }
+
+  .pedido-card li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

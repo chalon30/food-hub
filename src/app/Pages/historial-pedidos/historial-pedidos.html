@@ -1,0 +1,24 @@
+
+<h2>🧾 Historial de Pedidos</h2>
+
+<div *ngIf="cargando" class="cargando">Cargando pedidos...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div *ngIf="!cargando && pedidos.length === 0">
+  <p>No tienes pedidos registrados.</p>
+</div>
+
+<div *ngIf="!cargando && pedidos.length > 0">
+  <div *ngFor="let pedido of pedidos" class="pedido-card">
+    <p>Fecha: {{ pedido.fecha | date:'medium' }}</p>
+    <p>Total: S/ {{ pedido.total | number:'1.2-2' }}</p>
+    <p>Descuento: S/ {{ pedido.descuento | number:'1.2-2' }}</p>
+
+    <h4>Detalles:</h4>
+    <ul>
+      <li *ngFor="let detalle of pedido.detalles">
+        {{ detalle.cantidad }} x {{ detalle.producto.nombre }} - S/ {{ detalle.subtotal | number:'1.2-2' }}
+      </li>
+    </ul>
+  </div>
+</div>

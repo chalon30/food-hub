@@ -29,17 +29,18 @@ export class Login {
   constructor(private usuarioService: UsuarioService, private router: Router) {}
 
   login() {
-    this.usuarioService.login(this.correo, this.clave).subscribe({
-      next: (respuesta: any) => {
-        alert(respuesta.mensaje); // ✅ Muestra el mensaje de bienvenida
-        localStorage.setItem('usuario', JSON.stringify(respuesta.usuario));
-        this.router.navigate(['/']).then(() => {
-          window.location.reload(); // 🔄 Recarga después de redirigir al home
-        });
-      },
-      error: () => {
-        this.error = 'Correo o clave incorrectos';
-      },
-    });
-  }
+  this.usuarioService.login(this.correo, this.clave).subscribe({
+    next: (respuesta: any) => {
+      alert(respuesta.mensaje);
+      this.usuarioService.guardarUsuarioConToken(respuesta.usuario, respuesta.token);
+      this.router.navigate(['/']).then(() => {
+        window.location.reload();
+      });
+    },
+    error: () => {
+      this.error = 'Correo o clave incorrectos';
+    },
+  });
+}
+
 }
